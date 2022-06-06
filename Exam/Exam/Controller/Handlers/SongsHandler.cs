@@ -12,7 +12,7 @@ using Exam.View.InputManager.Interfaces;
 
 namespace Exam.Controller.Handlers
 {
-    public class SongsHandler
+    public class SongHandler
     {
         IBaseRepository<Song> _songRepository;
         IDisplay<Song> _display;
@@ -20,7 +20,7 @@ namespace Exam.Controller.Handlers
         IInputSystem _inputSystem;
         IFactory<Song> _songFactory;
 
-        public SongsHandler(IBaseRepository<Song> songRepository, IDisplay<Song> display,IMenuDisplay menuDisplay, 
+        public SongHandler(IBaseRepository<Song> songRepository, IDisplay<Song> display,IMenuDisplay menuDisplay, 
             IInputSystem inputSystem, IFactory<Song> songFactory )
         {
             _songRepository = songRepository;
@@ -30,52 +30,47 @@ namespace Exam.Controller.Handlers
             _songFactory = songFactory;
         }
 
-        public void AddSongToPlaylist()
+        public List<Song> GetAll()
+        {
+            return _songRepository.GetAll();
+        }
+
+        public void AddSongToPlaylist(Song song)
         {
             string userConfirming = "";
-            Song song;
-            do
-            {
-                song = _songFactory.Create();
-                _display.DisplaySingle(song);
-                userConfirming = _inputSystem.FetchStringValue("Confirm?\n([y] - yes, [n] - no)");
-
-            } while (userConfirming != "y");
+            _display.DisplaySingle(song);
+            userConfirming = _inputSystem.FetchStringValue("Confirm?\n([y] - yes, [n] - no)");
             _songRepository.Add(song);
             _songRepository.Save();
         }
 
-        public void DeleteSong()
+        public void DeleteSong(Song song)
         {
-            string titleOfDeletingSong = _inputSystem.FetchStringValue("Title of song");
-            string authorOfDeletingSong = _inputSystem.FetchStringValue($"Author of {titleOfDeletingSong} Song");
-
-            var song = FindSong(titleOfDeletingSong, authorOfDeletingSong);
             if (song == null)
             {
-                _menuDisplay.DisplayMessage($"the song '{titleOfDeletingSong}' of the performance of '{titleOfDeletingSong}' " +
-                    "is not found in your playlist.\nPress enter to continue.");
+                _menuDisplay.DisplayMessage($"The song is not found in your playlist.\nPress enter to continue.");
                 return;
             }
             else
             {
                 _songRepository.Delete(song);
                 _songRepository.Save();
-                _inputSystem.FetchStringValue($"the song '{titleOfDeletingSong}' of the performance of '{titleOfDeletingSong}' has been removed." + 
+                _inputSystem.FetchStringValue($"The song '{song.Title}' of the performance of '{song.Author}' has been removed." + 
                     "\nPress enter to continue");
             }
                 
         }
         public Song? FindSong(string title, string author)
         {
+            if (title == null || title.Length < 1 || author == null || author.Length < 1) return null;
             var song = _songRepository.GetSingle(s => s.Title.Equals(title) && s.Author.Equals(author));
             if (song == null) return null;
             return song;
         }
 
-        public void SortSongsInPlaylist()
+        public void SortSongsInPlaylist(List<Song> list)
         {
-            _songRepository.SortByAuthor();
+            list.OrderBy(s => s.Title);
         }
     }
 }

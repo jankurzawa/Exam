@@ -20,10 +20,5 @@ namespace Exam.Data.DAL
         public List<Song> GetAll() => _context.Songs.AsNoTracking().ToList();
         public Song GetSingle(Func<Song, bool> condition) => _context.Songs.Where(condition).FirstOrDefault();
         public void Save() => _context.SaveChanges();
-        public void SortByAuthor()
-        {
-            _context.Songs.OrderBy(x => x.Author);
-            Save(); // zobaczyć jak to działa
-        }
     }
 }

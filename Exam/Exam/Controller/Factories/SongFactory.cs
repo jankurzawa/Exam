@@ -23,13 +23,17 @@ namespace Exam.Controller.Factories
 
         public Song Create()
         {
-            string title = null, author = null, albumName = null, length = null; ;
-
-            title = _inputSystem.FetchStringValueWithCondition("Title:", CheckIfProvideStringIsCorrectForSongAttribute);
-            author = _inputSystem.FetchStringValueWithCondition("Author:", CheckIfProvideStringIsCorrectForSongAttribute);
-            albumName = _inputSystem.FetchStringValueWithCondition("Album name:", CheckIfProvideStringIsCorrectForSongAttribute);
-            length = _inputSystem.FetchStringValueWithCondition("Length:", CheckIfProvideLengthIsCorrectForSongAttribute);
-            double parsedLength = Double.Parse(length);
+            string title = null, author = null, albumName = null, length = null, confirming = "n";
+            double parsedLength;
+            do
+            {
+                title = _inputSystem.FetchStringValueWithCondition("Title:", CheckIfProvideStringIsCorrectForSongAttribute);
+                author = _inputSystem.FetchStringValueWithCondition("Author:", CheckIfProvideStringIsCorrectForSongAttribute);
+                albumName = _inputSystem.FetchStringValueWithCondition("Album name:", CheckIfProvideStringIsCorrectForSongAttribute);
+                length = _inputSystem.FetchStringValueWithCondition("Length:", CheckIfProvideLengthIsCorrectForSongAttribute);
+                parsedLength = Double.Parse(length);
+                confirming = _inputSystem.FetchStringValue($"Confirm? ([y] - yes, [n] - no)");
+            } while (confirming == "n");
             return new Song(title, author, albumName, parsedLength);
         }
     }

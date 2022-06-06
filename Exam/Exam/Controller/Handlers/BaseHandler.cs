@@ -18,15 +18,16 @@ namespace Exam.Controller.Handlers
             options = GetAvailableCommands();
         }
 
-        protected void Run()
+        public void Run()
         {
             string userInput = "";
             while (!userInput.Equals("quit"))
             {
                 _menuDisplay.ClearScreen();
                 _menuDisplay.DiplayOptions(new List<string>(options));
-                userInput = _inputSystem.FetchStringValue("Press enter to continue");
+                userInput = _inputSystem.FetchStringValue("Provide option ");
                 RunFeatureBasedOn(userInput);
+                _inputSystem.FetchStringValue("Press enter to continue");
                 _menuDisplay.ClearScreen();
             }
         }

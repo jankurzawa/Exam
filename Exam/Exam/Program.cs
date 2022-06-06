@@ -1,4 +1,8 @@
-﻿using Exam.Controller;
+﻿using Exam.Controller.Factories;
+using Exam.Controller.Handlers;
+using Exam.Data.DAL;
+using Exam.View.DisplayManager;
+using Exam.View.InputManager;
 
 namespace Exam
 {
@@ -6,7 +10,13 @@ namespace Exam
     {
         static void Main(string[] args)
         {
-            var App = new AppHandler();
+            SongView songView = new();
+            MenuDisplay menuDisplay = new ();
+            InputManager inputSystem = new();
+            SongFactory songFactory = new(inputSystem);
+            SongRepository songRepository = new();
+            SongHandler songHandler = new(songRepository, songView, menuDisplay, inputSystem, songFactory);
+            var App = new AppHandler(songHandler, songFactory, menuDisplay, songView, inputSystem);
             App.Run();
         }
     }
