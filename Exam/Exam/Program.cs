@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Exam.Controller;
 
 namespace Exam
 {
@@ -6,7 +6,8 @@ namespace Exam
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var App = new AppHandler();
+            App.Run();
         }
     }
 }

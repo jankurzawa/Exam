@@ -4,17 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exam.Controller
+namespace Exam.View.InputManager
 {
-    public class AppHandler
+    public interface IInputSystem
     {
-
-
-
-
-        public void Run()
-        {
-
-        }
+        public string FetchStringValue(string messege);
     }
 }
