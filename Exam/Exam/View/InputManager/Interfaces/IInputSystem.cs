@@ -1,4 +1,4 @@
-﻿namespace Exam.View.InputManager
+﻿namespace Exam.View.InputManager.Interfaces
 {
     public interface IInputSystem
     {

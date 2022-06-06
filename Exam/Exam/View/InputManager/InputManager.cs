@@ -1,4 +1,5 @@
-﻿using static System.Console;
+﻿using Exam.View.InputManager.Interfaces;
+using static System.Console;
 
 namespace Exam.View.InputManager
 {

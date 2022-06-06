@@ -1,4 +1,4 @@
-﻿namespace Exam.View.DisplayManager
+﻿namespace Exam.View.DisplayManager.Interfaces
 {
     public interface IDisplay<T> where T : class
     {
