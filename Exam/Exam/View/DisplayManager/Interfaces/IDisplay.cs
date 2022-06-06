@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Exam.View.DisplayManager
+﻿namespace Exam.View.DisplayManager
 {
     public interface IDisplay<T> where T : class
     {

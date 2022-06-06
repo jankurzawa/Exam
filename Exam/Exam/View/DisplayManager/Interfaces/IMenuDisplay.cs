@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Exam.View.DisplayManager.Interfaces
+﻿namespace Exam.View.DisplayManager.Interfaces
 {
     public interface IMenuDisplay
     {
