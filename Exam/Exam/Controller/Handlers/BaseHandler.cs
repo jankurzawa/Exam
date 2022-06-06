@@ -1,7 +1,7 @@
 ﻿using Exam.View.DisplayManager.Interfaces;
 using Exam.View.InputManager.Interfaces;
 
-namespace Exam.Controller
+namespace Exam.Controller.Handlers
 {
     public abstract class BaseHandler<T> where T : class
     {
@@ -10,7 +10,7 @@ namespace Exam.Controller
         protected IInputSystem _inputSystem;
         protected string[] options;
 
-        public BaseHandler(IMenuDisplay menuDisplay, IDisplay<T> display, IInputSystem inputSystem )
+        public BaseHandler(IMenuDisplay menuDisplay, IDisplay<T> display, IInputSystem inputSystem)
         {
             _menuDisplay = menuDisplay;
             _display = display;

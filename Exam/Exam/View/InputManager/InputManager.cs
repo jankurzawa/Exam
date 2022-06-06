@@ -10,5 +10,15 @@ namespace Exam.View.InputManager
             WriteLine(messege);
             return ReadLine();
         }
+
+        public string FetchStringValueWithCondition(string messege, Predicate<string> contition)
+        {
+            string value = "";
+            do
+            {
+                value = ReadLine();
+            } while (!contition.Invoke(value));
+            return value;
+        }
     }
 }

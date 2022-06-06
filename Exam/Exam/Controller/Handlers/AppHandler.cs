@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exam.Controller
+namespace Exam.Controller.Handlers
 {
     public class AppHandler
     {
