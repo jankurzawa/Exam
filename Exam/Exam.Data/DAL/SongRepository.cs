@@ -1,11 +1,6 @@
 ﻿using Exam.Data.Context;
 using Exam.Data.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exam.Data.DAL
 {
@@ -22,7 +17,7 @@ namespace Exam.Data.DAL
 
         public void Sort()
         {
-            _context.Songs.AsTracking().OrderByDescending(s => s.Title).ToList();
+            _context.Songs.OrderByDescending(s => s.Title);
             Save();
         } 
         public void Save() => _context.SaveChanges();

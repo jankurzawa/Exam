@@ -15,7 +15,7 @@ namespace Exam
             InputManager inputSystem = new();
             SongFactory songFactory = new(inputSystem);
             SongRepository songRepository = new();
-            SongHandler songHandler = new(songRepository, songView, menuDisplay, inputSystem, songFactory);
+            SongHandler songHandler = new(songRepository, menuDisplay, inputSystem);
             var App = new AppHandler(songHandler, songFactory, menuDisplay, songView, inputSystem);
             App.Run();
         }

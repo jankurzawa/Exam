@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Exam.Controller.Factories;
+﻿using Exam.Controller.Factories;
 using Exam.Data.DAL;
 using Exam.Data.Entities;
-using Exam.View.DisplayManager;
 using Exam.View.DisplayManager.Interfaces;
 using Exam.View.InputManager.Interfaces;
 
@@ -15,19 +9,15 @@ namespace Exam.Controller.Handlers
     public class SongHandler
     {
         IBaseRepository<Song> _songRepository;
-        IDisplay<Song> _display;
         IMenuDisplay _menuDisplay;
         IInputSystem _inputSystem;
-        IFactory<Song> _songFactory;
 
-        public SongHandler(IBaseRepository<Song> songRepository, IDisplay<Song> display,IMenuDisplay menuDisplay, 
-            IInputSystem inputSystem, IFactory<Song> songFactory )
+        public SongHandler(IBaseRepository<Song> songRepository,IMenuDisplay menuDisplay, 
+            IInputSystem inputSystem)
         {
             _songRepository = songRepository;
-            _display = display;
             _menuDisplay = menuDisplay;
             _inputSystem = inputSystem;
-            _songFactory = songFactory;
         }
 
         public List<Song> GetAll()
@@ -41,7 +31,7 @@ namespace Exam.Controller.Handlers
             _songRepository.Save();
         }
 
-        public void DeleteSong(Song song)
+        public void DeleteSong(Song? song)
         {
             if (song == null)
             {

@@ -1,10 +1,5 @@
 ﻿using Exam.Data.Entities;
 using Exam.View.InputManager.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exam.Controller.Factories
 {

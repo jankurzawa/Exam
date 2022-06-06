@@ -2,11 +2,6 @@
 using Exam.Data.Entities;
 using Exam.View.DisplayManager.Interfaces;
 using Exam.View.InputManager.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exam.Controller.Handlers
 {
@@ -14,7 +9,8 @@ namespace Exam.Controller.Handlers
     {
         SongHandler _songHandler;
         IFactory<Song> _songFactory; 
-        public AppHandler(SongHandler songHandler, IFactory<Song> songFactory, IMenuDisplay menuDisplay, IDisplay<Song> display, IInputSystem inputSystem) : base(menuDisplay, display, inputSystem)
+        public AppHandler(SongHandler songHandler, IFactory<Song> songFactory, IMenuDisplay menuDisplay, 
+            IDisplay<Song> display, IInputSystem inputSystem) : base(menuDisplay, display, inputSystem)
         {
             _songHandler = songHandler;
             _songFactory = songFactory;
