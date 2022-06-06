@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exam.View.DisplayManager.Interfaces
 {
-    public interface IMenuDisplayManager
+    public interface IMenuDisplay
     {
         public void DiplayOptions(List<string> options);
         public void DisplayMessage(string message);

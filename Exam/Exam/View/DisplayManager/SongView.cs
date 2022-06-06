@@ -8,7 +8,7 @@ using Exam.View.DisplayManager.Interfaces;
 
 namespace Exam.View.DisplayManager
 {
-    public class SongView : IDisplayManager<Song>
+    public class SongView : IDisplay<Song>
     {
         public void DisplayList(List<Song> entities) => entities.ForEach(e => DisplaySingle(e));
 
