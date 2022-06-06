@@ -18,7 +18,7 @@ namespace Exam.Controller.Factories
         {
             _inputSystem = inputSystem;
             CheckIfProvideStringIsCorrectForSongAttribute = value => value.Length > 0 && value != null;
-            CheckIfProvideLengthIsCorrectForSongAttribute = value => value.Length > 3 && value[value.Length - 3].Equals(".");
+            CheckIfProvideLengthIsCorrectForSongAttribute = value => value.Length > 3 && value[^3] == '.';
         }
 
         public Song Create()
@@ -30,7 +30,7 @@ namespace Exam.Controller.Factories
                 title = _inputSystem.FetchStringValueWithCondition("Title:", CheckIfProvideStringIsCorrectForSongAttribute);
                 author = _inputSystem.FetchStringValueWithCondition("Author:", CheckIfProvideStringIsCorrectForSongAttribute);
                 albumName = _inputSystem.FetchStringValueWithCondition("Album name:", CheckIfProvideStringIsCorrectForSongAttribute);
-                length = _inputSystem.FetchStringValueWithCondition("Length:", CheckIfProvideLengthIsCorrectForSongAttribute);
+                length = _inputSystem.FetchStringValueWithCondition("Length (ex. 3.30):", CheckIfProvideLengthIsCorrectForSongAttribute);
                 parsedLength = Double.Parse(length);
                 confirming = _inputSystem.FetchStringValue($"Confirm? ([y] - yes, [n] - no)");
             } while (confirming == "n");

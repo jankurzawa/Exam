@@ -1,6 +1,7 @@
 ﻿using Exam.Data.Entities;
 using Exam.View.DisplayManager.Interfaces;
 using static System.Console;
+using System.Linq;
 
 namespace Exam.View.DisplayManager
 {

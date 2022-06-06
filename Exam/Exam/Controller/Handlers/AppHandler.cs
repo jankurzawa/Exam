@@ -21,7 +21,7 @@ namespace Exam.Controller.Handlers
         }
 
         protected override string[] GetAvailableCommands()
-             => new string[] {"[1] - Display all songs in playlist.", "[2] - Add song to playlist.", "[3] - Sort playlist by title",
+             => new string[] {"[1] - Display all songs in playlist.", "[2] - Add song to playlist.", "[3] - Display sorted playlist by title",
              "[4] - Remove song", "[quit] - to quit "};
 
         protected override void RunFeatureBasedOn(string option)
@@ -36,7 +36,7 @@ namespace Exam.Controller.Handlers
                     _songHandler.AddSongToPlaylist(song);
                     break;
                 case "3":
-                    _songHandler.SortSongsInPlaylist(_songHandler.GetAll());
+                    _songHandler.SortSongsInPlaylist();
                     break;
                 case "4":
                     _songHandler.DeleteSong(_songHandler.FindSong(_inputSystem.FetchStringValue("Title:"), _inputSystem.FetchStringValue("Author:")));

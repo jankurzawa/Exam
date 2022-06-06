@@ -17,8 +17,15 @@ namespace Exam.Data.DAL
         public void Add(Song entity) => _context.Songs.Add(entity);
         public void Delete(Song entity) => _context.Songs.Remove(entity);
         public void Edit(Song entity) => _context.Songs.Update(entity);
-        public List<Song> GetAll() => _context.Songs.AsNoTracking().ToList();
+        public List<Song> GetAll() => _context.Songs.ToList();
         public Song GetSingle(Func<Song, bool> condition) => _context.Songs.Where(condition).FirstOrDefault();
+
+        public void Sort()
+        {
+            _context.Songs.AsTracking().OrderByDescending(s => s.Title).ToList();
+            Save();
+        } 
         public void Save() => _context.SaveChanges();
+
     }
 }

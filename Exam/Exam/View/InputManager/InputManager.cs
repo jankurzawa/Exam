@@ -16,6 +16,7 @@ namespace Exam.View.InputManager
             string value = "";
             do
             {
+                WriteLine(messege);
                 value = ReadLine();
             } while (!contition.Invoke(value));
             return value;

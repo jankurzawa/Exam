@@ -37,9 +37,6 @@ namespace Exam.Controller.Handlers
 
         public void AddSongToPlaylist(Song song)
         {
-            string userConfirming = "";
-            _display.DisplaySingle(song);
-            userConfirming = _inputSystem.FetchStringValue("Confirm?\n([y] - yes, [n] - no)");
             _songRepository.Add(song);
             _songRepository.Save();
         }
@@ -68,9 +65,10 @@ namespace Exam.Controller.Handlers
             return song;
         }
 
-        public void SortSongsInPlaylist(List<Song> list)
+        public void SortSongsInPlaylist()
         {
-            list.OrderBy(s => s.Title);
+            _songRepository.Sort();
+            _songRepository.Save();
         }
     }
 }
